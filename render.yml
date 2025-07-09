@@ -3,8 +3,7 @@ services:
     name: dvwa-web
     runtime: php
     buildCommand: "./setup-render.sh"
-startCommand: "/usr/sbin/apache2 -DFOREGROUND"    envVars:
-      # ... (el resto de tu configuración actual)
+startCommand: "/usr/sbin/apache2ctl -DFOREGROUND"      # ... (el resto de tu configuración actual)
       - key: PHP_ENV
         value: production
       - key: DB_HOST
