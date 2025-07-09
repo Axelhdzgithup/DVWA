@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: dvwa-web
+    runtime: php
+    buildCommand: "./setup-render.sh"
+    startCommand: "apache2-foreground"
+    envVars:
+      - key: PHP_ENV
+        value: production
+      - key: DB_HOST
+        fromDatabase:
+          name: dvwa-db
+          property: host
+      - key: DB_USER
+        fromDatabase:
+          name: dvwa-db
+          property: username
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: dvwa-db
+          property: password
+      - key: DB_NAME
+        fromDatabase:
+          name: dvwa-db
+          property: name
+
+  - type: database
+    name: dvwa-db
+    engine: mysql
+    version: "5.7"
