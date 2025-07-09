@@ -3,7 +3,8 @@ services:
     name: dvwa-web
     runtime: php
     buildCommand: "./setup-render.sh"
-    startCommand: "docker-php-entrypoint apache2-foreground"  # <-- Usa este    envVars:
+    startCommand: "/usr/sbin/apache2 -DFOREGROUND"
+    envVars:
       - key: PHP_ENV
         value: production
       - key: DB_HOST
